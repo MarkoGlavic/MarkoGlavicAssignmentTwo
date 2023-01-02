@@ -35,25 +35,10 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         {movie.overview}
       </Typography>
 
-      <Paper 
-        component="ul" 
-        sx={root}
-      >
-        <li>
-          <Chip label="Genres" sx={chip} color="primary" />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} sx={chip} />
-          </li>
-        ))}
-      </Paper>
+  
       <Paper component="ul" sx={root}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
-        />
+  
         <Chip
           icon={<StarRate />}
           label={`${movie.vote_average} (${movie.vote_count}`}

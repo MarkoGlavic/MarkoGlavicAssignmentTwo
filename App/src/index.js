@@ -5,6 +5,7 @@ import HomePage from "./pages/homePage";
 import UpcomingPage from "./pages/upcomingPage";
 import SignUpPage from "./pages/signUpPage";
 import {Link} from 'react-router-dom'
+import MovieDetailsPage from "./pages/movieDetailsPage";
 import SiteHeader from './components/siteHeader'
 // import UpcomingPage from "./pages/upcomingPage";
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -30,6 +31,8 @@ const queryClient = new QueryClient({
               <Routes>
                 <Route path ="/upcoming" element={<UpcomingPage />}/>
               <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/movies/:id" element={<MovieDetailsPage />} />
+
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
       </Routes>

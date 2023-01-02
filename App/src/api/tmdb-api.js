@@ -27,11 +27,44 @@ export const getMovies = () => {
   ).then(res => res.json());
 };
 
-export const getUpcomingMovie = () => {
+
+export const getMovie = (args) => {
+
+  const [, idPart] = args.queryKey;
+  const { id } = idPart;
   return fetch(
-     '/api/upcoming',{headers: {
+    `/api/movies/${id}`,{headers: {
        'Authorization': window.localStorage.getItem('token')
     }
   }
   ).then(res => res.json());
 };
+
+export const getUpcomingMovie = () => {
+  return fetch(
+     '/api/upcoming/',{headers: {
+       'Authorization': window.localStorage.getItem('token')
+    }
+  }
+  ).then(res => res.json());
+};
+
+
+
+export const getMovieImages = ({ queryKey }) => {
+  const [, idPart] = queryKey;
+  const { id } = idPart;
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  ).then( (response) => {
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+
+  })
+  .catch((error) => {
+    throw error
+ });
+};
+
