@@ -14,6 +14,9 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import ShowsContextProvider from "./contexts/showsContext";
 import ShowDetailsPage from "./pages/showDetailsPage";
+import AuthProvider from "./contexts/authContext";
+import PrivateRoute from "./pages/privateRoute";
+import LoginPage from "./pages/loginPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -29,15 +32,29 @@ const queryClient = new QueryClient({
       return (
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
+          <AuthProvider>
+
               <SiteHeader />     
               <MoviesContextProvider>
               <ShowsContextProvider>
 
+
+
               <Routes>
+
+              <Route
+              path="/upcoming"
+              element={
+                <PrivateRoute>
+                  <UpcomingPage />
+                </PrivateRoute>
+              }
+            />
+                          <Route path ="/login" element={<LoginPage />}/>
+
               <Route path ="/shows" element={<ShowPage />}/>
               <Route path="/shows/:id" element={<ShowDetailsPage />} />
 
-                <Route path ="/upcoming" element={<UpcomingPage />}/>
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/movies/:id" element={<MovieDetailsPage />} />
 
@@ -47,6 +64,8 @@ const queryClient = new QueryClient({
       </ShowsContextProvider>
 
       </MoviesContextProvider>
+      </AuthProvider>
+
     </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
