@@ -8,6 +8,7 @@ import './seedData'
 import usersRouter from './api/users';
 import session from 'express-session';
 import passport from './authenticate';
+import tvRouter from './api/tvs'
 
 
 dotenv.config();
@@ -35,7 +36,7 @@ app.use('/api/genres', genresRouter)
 app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/upcoming', passport.authenticate('jwt', {session: false}), upcomingRouter);
-
+app.use('/api/tvs', tvRouter)
 app.use(errHandler)
 
 app.listen(port, () => {

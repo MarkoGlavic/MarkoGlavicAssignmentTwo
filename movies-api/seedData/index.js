@@ -7,6 +7,8 @@ import movieModel from '../api/movies/movieModel';
 import movies from './movies.js';
 import upcomingModel from '../api/upcomingMovies/upcomingModel';
 import upcoming from './upcoming';
+import tvModel from '../api/tvs/tvModel';
+import tvs from './tvs';
 dotenv.config();
 
 // deletes all user documents in collection and inserts test data
@@ -62,9 +64,23 @@ async function loadGenres() {
     }
   }
 
+  
+  export async function loadTvs() {
+    console.log('load seed data');
+    console.log(tvs.length);
+    try {
+      await tvModel.deleteMany();
+      await tvModel.collection.insertMany(tvs);
+      console.info(`${tvs.length} Shows were successfully stored.`);
+    } catch (err) {
+      console.error(`failed to Load movie Data: ${err}`);
+    }
+  }
+
 if (process.env.SEED_DB) {
   loadUsers();
   loadGenres();//you may not need this line if you skipped the exercises
   loadMovies();//ADD THIS LINE
   loadUpcoming();
+  loadTvs();
 }
