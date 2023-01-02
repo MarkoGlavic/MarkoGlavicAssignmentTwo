@@ -26,3 +26,12 @@ export const getMovies = () => {
   }
   ).then(res => res.json());
 };
+
+export const getUpcomingMovie = () => {
+  return fetch(
+     '/api/upcoming',{headers: {
+       'Authorization': window.localStorage.getItem('token')
+    }
+  }
+  ).then(res => res.json());
+};

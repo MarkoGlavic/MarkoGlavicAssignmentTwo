@@ -2,6 +2,7 @@ import React from "react";
 import {createRoot} from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
+import UpcomingPage from "./pages/upcomingPage";
 import SignUpPage from "./pages/signUpPage";
 import {Link} from 'react-router-dom'
 import SiteHeader from './components/siteHeader'
@@ -27,6 +28,7 @@ const queryClient = new QueryClient({
               <SiteHeader />     
               <MoviesContextProvider>
               <Routes>
+                <Route path ="/upcoming" element={<UpcomingPage />}/>
               <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />
