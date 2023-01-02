@@ -3,9 +3,6 @@ import { movieReviews } from './moviesData';
 import uniqid from 'uniqid'
 import movieModel from './movieModel';
 import asyncHandler from 'express-async-handler';
-import {
-    getTvs
-} from '../tmdb-api'
 
 const router = express.Router(); 
 
@@ -34,10 +31,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
         res.status(404).json({message: 'The resource you requested could not be found.', status_code: 404});
     }
 }));
-router.get('/tmdb/tvs', asyncHandler( async(req, res) => {
-    const tvs = await getTvs();
-    res.status(200).json(tvs);
-  }));
+
 
 
 // Get movie reviews

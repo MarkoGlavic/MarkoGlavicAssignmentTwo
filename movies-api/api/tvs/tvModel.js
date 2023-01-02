@@ -7,6 +7,8 @@ const TvsSchema = new Schema({
   id: { type: Number, required: true, unique: true },
   backdrop_path: { type: String },
   first_air_date: { type: String },
+  overview: { type: String },
+
   name: { type: String },
   original_name: { type: String },
   genre_ids: [{ type: Number }],
@@ -24,7 +26,6 @@ const TvsSchema = new Schema({
     iso_639_1: { type: String },
     name: { type: String }
   }],
-  overview: { type: String },
   tagline: { type: String }
 });
 

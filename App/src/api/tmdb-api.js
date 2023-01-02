@@ -58,5 +58,16 @@ export const getTvs = () => {
  ).then(res => res.json());
 }
 
+export const getTv = (args) => {
+
+  const [, idPart] = args.queryKey;
+  const { id } = idPart;
+  return fetch(
+    `/api/tvs/${id}`,{headers: {
+       'Authorization': window.localStorage.getItem('token')
+    }
+  }
+  ).then(res => res.json());
+};
 
 

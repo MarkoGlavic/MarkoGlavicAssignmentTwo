@@ -13,6 +13,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import ShowsContextProvider from "./contexts/showsContext";
+import ShowDetailsPage from "./pages/showDetailsPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -34,6 +35,7 @@ const queryClient = new QueryClient({
 
               <Routes>
               <Route path ="/shows" element={<ShowPage />}/>
+              <Route path="/shows/:id" element={<ShowDetailsPage />} />
 
                 <Route path ="/upcoming" element={<UpcomingPage />}/>
               <Route path="/signup" element={<SignUpPage />} />
