@@ -1,5 +1,7 @@
 import React, { useState, createContext, useEffect, useReducer } from "react";
 import { getTvs } from "../api/tmdb-api";
+import { rateMovie } from "../api/tmdb-api";
+
 
 export const ShowsContext = createContext(null);
 
@@ -14,7 +16,15 @@ const reducer = (state, action) => {
 
 const ShowsContextProvider = props => {
   const [state, dispatch] = useReducer(reducer, { shows: []});
+  const [rating, setRating] = useState(1)
   const [authenticated, setAuthenticated] = useState(false);
+
+  const ratingChange = async (rating) => {
+    
+    console.log(rating)
+    
+  };
+
 
   useEffect(() => {
     getTvs().then(result => {
@@ -27,7 +37,9 @@ const ShowsContextProvider = props => {
     <ShowsContext.Provider
       value={{
         shows: state.shows,
-        setAuthenticated
+        setAuthenticated,
+        ratingChange,
+        rating
       }}
     >
       {props.children}

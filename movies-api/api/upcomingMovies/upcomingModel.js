@@ -29,7 +29,6 @@ const UpcomingMovieSchema = new Schema({
   }],
   status: { type: String },
   tagline: { type: String },
-  rating: [{type: Number, ref: 'Upcoming'}]
 
 });
 

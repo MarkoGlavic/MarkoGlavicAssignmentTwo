@@ -13,7 +13,6 @@ const TvsSchema = new Schema({
   original_name: { type: String },
   genre_ids: [{ type: Number }],
   original_language: { type: String },
-  origin_country: { type: String },
   popularity: { type: Number },
   vote_count: { type: Number },
   vote_average: { type: Number },
@@ -26,7 +25,9 @@ const TvsSchema = new Schema({
     iso_639_1: { type: String },
     name: { type: String }
   }],
-  tagline: { type: String }
+  tagline: { type: String },
+  rating: [{type: Number, ref: 'Tvs'}] 
+
 });
 
 TvsSchema.statics.findByMovieDBId = function (id) {

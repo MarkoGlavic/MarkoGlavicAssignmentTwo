@@ -34,15 +34,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }));
 
 
-router.post('/:id/rating', asyncHandler(async (req, res) => {
-    const id = parseInt(req.params.id);
-    const upcoming = await upcomingModel.findByMovieDBId(id);
-    const rating = req.body.rating
-   await upcoming.rating.push(rating)
-   await upcoming.save(); 
-   res.status(201).json(upcoming); 
-}));
-
 
 
 
