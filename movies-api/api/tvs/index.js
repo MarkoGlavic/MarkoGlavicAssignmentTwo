@@ -39,6 +39,7 @@ router.post('/:id/rating', asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const upcoming = await tvModel.findByMovieDBId(id);
     const rating = req.body.rating
+    console.log(rating)
    await upcoming.rating.push(rating)
    await upcoming.save(); 
    res.status(201).json(upcoming); 

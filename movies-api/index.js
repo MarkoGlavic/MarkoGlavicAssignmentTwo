@@ -33,10 +33,10 @@ app.use(express.json());
 app.use(passport.initialize());
 
 app.use('/api/genres', genresRouter)
-app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesRouter);
+app.use('/api/movies', moviesRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/upcoming', passport.authenticate('jwt', {session: false}), upcomingRouter);
-app.use('/api/tvs',passport.authenticate('jwt', {session: false}), tvRouter)
+app.use('/api/tvs', tvRouter)
 app.use(errHandler)
 
 app.listen(port, () => {
