@@ -71,3 +71,16 @@ export const getTv = (args) => {
 };
 
 
+export const rateMovie = (args) => {
+
+  const [, idPart] = args.queryKey;
+  const { id } = idPart;
+  return fetch(
+    `/api/upcoming/${id}/rating`,{headers: {
+       'Authorization': window.localStorage.getItem('token')
+    }
+  }
+  ).then(res => res.json());
+};
+
+

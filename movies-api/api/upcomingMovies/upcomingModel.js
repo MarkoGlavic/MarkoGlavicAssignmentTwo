@@ -28,7 +28,9 @@ const UpcomingMovieSchema = new Schema({
     name: { type: String }
   }],
   status: { type: String },
-  tagline: { type: String }
+  tagline: { type: String },
+  rating: [{type: Number, ref: 'Upcoming'}]
+
 });
 
 UpcomingMovieSchema.statics.findByMovieDBId = function (id) {
