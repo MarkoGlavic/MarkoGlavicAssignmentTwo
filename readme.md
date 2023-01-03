@@ -24,7 +24,7 @@ Describe getting/installing the software, perhaps:
 git clone https://github.com/MarkoGlavic/MarkoGlavicAssignmentTwo
 ```
 
-installation: go into both folders and run ipm install
+installation: go into both folders and run npm install
 
 ## API Configuration
 Describe any configuration that needs to take place before running the API. For example, creating an ``.env`` and what variables to put in it. Give an example of how this might be structured/done.
